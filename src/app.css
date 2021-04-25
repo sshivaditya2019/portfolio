@@ -31,7 +31,9 @@ background: linear-gradient(90deg, rgba(43,211,254,1) 0%, rgba(71,181,255,1) 58%
     position: relative;
     z-index: 10;
   }
-  
+ .mmm { 
+    width: 60vw;
+  }
 
   .img-sss { 
     
