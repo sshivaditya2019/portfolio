@@ -1,5 +1,6 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const HtmlWebpackInlineSVGPlugin = require('html-webpack-inline-svg-plugin');
 
 module.exports = {
     entry: path.join(__dirname, "src", "index.js"),
@@ -19,14 +20,21 @@ module.exports = {
                 use: ["style-loader", "css-loader"],
             },
             { 
-                test: /\.(jpg|jpeg|png|gif|mp3|svg)$/,
+                test: /\.(jpg|jpeg|png|gif|mp3|ttf)$/,
                 use: ["file-loader"] 
             },
+            {
+                test: /\.svg$/,
+                use: ['@svgr/webpack', 'url-loader'],
+              },
         ],
     },
     plugins: [
         new HtmlWebpackPlugin({
             template: path.join(__dirname, "src", "index.html"),
         }),
+        new HtmlWebpackInlineSVGPlugin({
+            template: path.join(__dirname, "src", "images")
+        })
     ],
 };
